@@ -10,7 +10,7 @@ class PlayerShip : public Ship
 public:
 
 	/** @brief Creates a new instance of PlayerShip. */
-	PlayerShip() { }
+	PlayerShip() { SetSpeed(1000); }
 	virtual ~PlayerShip() { }
 
 	/** @brief Loads the content for the player ship.

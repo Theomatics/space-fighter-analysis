@@ -24,7 +24,7 @@ void MainMenuScreen::LoadContent(ResourceManager& resourceManager)
 	const int COUNT = 2;
 	MenuItem *pItem;
 	Font::SetLoadSize(20, true);
-	Font *pFont = resourceManager.Load<Font>("Fonts\\arial.ttf");
+	Font *pFont = resourceManager.Load<Font>("Fonts\\Ethnocentric.ttf");
 
 	SetDisplayCount(COUNT);
 
@@ -44,7 +44,7 @@ void MainMenuScreen::LoadContent(ResourceManager& resourceManager)
 	// when "Start Game" is selected, replace the "SetRemoveCallback" delegate
 	// so that it doesn't quit the game (originally set in the constructor)
 	GetMenuItem(START_GAME)->SetOnSelect([this](){
-		SetOnRemove([this](){ AddScreen(new GameplayScreen()); });
+		SetOnRemove([this](){ AddScreen(new GameplayScreen(GetStartingLevel())); });
 		Exit();
 	});
 
@@ -62,7 +62,7 @@ void MainMenuScreen::Update(const GameTime& gameTime)
 	{
 		pItem->SetAlpha(alpha);
 		isSelected = pItem->IsSelected();
-		pItem->SetColor(isSelected ? Color::WHITE : Color::BLUE);
+		pItem->SetColor(isSelected ? Color::RED : Color::GOLD);
 		pItem->SetTextOffset(isSelected ? Vector2::UNIT_X * offset : Vector2::ZERO);
 	}
 
